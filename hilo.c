@@ -66,9 +66,7 @@ int main(int argc, char *argv[]){
 		generarNumerosArreglos(arreglos,numeroelementos);
 		 
 		double tf=obtenerTiempoActual()-ti;
-		printf("tiempo en generar arreglo : %f \n", tf);
-		
-		
+		//printf("tiempo en generar arreglo : %f \n", tf);
 		
 		for(int cant=numerohilosini; cant<=numerohilosfin; cant++){
 			ti=obtenerTiempoActual();
@@ -110,9 +108,9 @@ int main(int argc, char *argv[]){
 				//printf("Suma parcial hilo %d: %ld\n", hilo, (long)valor_retorno);
 				suma=suma+(long)valor_retorno;
 			}	
-			printf("Suma total : %ld con %d hilos\n", suma, cant);
+			//printf("Suma total : %ld con %d hilos\n", suma, cant);
 			tf=obtenerTiempoActual()-ti;
-			printf("tiempo de ejecucion: %f con %d hilos \n", tf,cant);
+			printf("%f \n", tf);
 			suma=tf=ti=0;
 		}
 	}else if(argc==3){
@@ -156,7 +154,7 @@ int main(int argc, char *argv[]){
 		}
 
 		//esperando la finalizacion de los hilos
-		printf("Hilo principal esta esperando a que terminen los otros hilos\n");
+		//printf("Hilo principal esta esperando a que terminen los otros hilos\n");
 		for(hilo=0;hilo<numerohilos;hilo++) {
 			valor_retorno=0;
 			int status1 = pthread_join(hilos[hilo], &valor_retorno);
@@ -164,12 +162,12 @@ int main(int argc, char *argv[]){
 				fprintf(stderr, "Error al esperar por el hilo 1\n");
 				exit(-1);
 			}
-			printf("Suma parcial hilo %d: %ld\n", hilo, (long)valor_retorno);
+			//printf("Suma parcial hilo %d: %ld\n", hilo, (long)valor_retorno);
 			suma=suma+(long)valor_retorno;
 		}	
-		printf("Suma total: %ld\n", suma);
+		//printf("Suma total: %ld\n", suma);
 		double tf=obtenerTiempoActual()-ti;
-		printf("tiempo de ejecucion: %f \n", tf);
+		printf("%f \n", tf);
 	}else{
 		printf("por favor ingrese correctamente los parametros: \n 1. numero de elementos \n 2. numeros de hilos");
 	}
